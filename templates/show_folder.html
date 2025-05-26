@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="{% static 'css/show.folder.css' %}">
+    <style>
+        .back-button {
+            margin: 20px;
+        }
+
+        .back-button button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-button button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+    <div class="gallery-container">
+        <h1>{{ x }}</h1>
+
+        {% for file in files %}
+            {% if file %}
+            <div class="gallery-item">
+                <img src="{{ MEDIA_URL }}{{ file }}" alt="{{ file }}">
+                <a href="{% url 'delete_image' file %}">
+                    <button class="delete-button" onclick="deleteFile('{{ file }}')">Delete</button>
+                    <p>{{ file }}</p>
+                </a>
+            </div>
+            {% else %}
+                <p>No images found in the directory.</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    
+
+    <!-- 🔙 BACK BUTTON -->
+    <div class="back-button">
+        <a href="{% url 'index' %}">
+            <button>⬅ Back to Home</button>
+        </a>
+    </div>
+</body>
+</html>

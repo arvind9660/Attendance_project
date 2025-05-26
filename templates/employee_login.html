@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Login - WroxAttend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 25px;
+            color: #2c3e50;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        select {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            padding: 12px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.03);
+        }
+
+        .message {
+            margin-top: 10px;
+            color: red;
+            font-weight: 500;
+        }
+
+        .logo {
+            width: 70px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <img src="{% static 'images/face2.jpg' %}" alt="Logo" class="logo">
+    <h2>Employee Login</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div>
+            <label for="company">Company:</label>
+            <select name="company" id="company" required>
+                <option value="">Select Company</option>
+                {% for company in companies %}
+                    <option value="{{ company.id }}">{{ company.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required placeholder="Enter your email">
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required placeholder="Enter your password">
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+
+    {% for message in messages %}
+        <p class="message">{{ message }}</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+/* General reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #00c6ff, #0072ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-30px);
+    opacity: 0;
+    animation: slideIn 0.6s ease-out forwards;
+}
+
+/* Slide-in effect for container */
+@keyframes slideIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 26px;
+    color: #0072ff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Fade-in effect for the header */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Input fields */
+.input-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Input field styling */
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.2s ease;
+}
+
+/* Focus effect: Glowing & slight scale */
+.input-group input:focus {
+    outline: none;
+    border-color: #0072ff;
+    box-shadow: 0 0 8px rgba(0, 114, 255, 0.5);
+    transform: scale(1.02);
+}
+
+/* Terms & Conditions */
+.terms {
+    font-size: 13px;
+    margin-bottom: 20px;
+    color: #777;
+    transition: color 0.3s ease;
+}
+
+.terms a {
+    color: #0072ff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+    color: #005bb5;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #0072ff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effects for button */
+.btn:hover {
+    background-color: #005bb5;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 114, 255, 0.2);
+}
+
+/* Signin link */
+.signin-text {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.signin-text a {
+    color: #0072ff;
+    text-decoration: none;
+}
+
+.signin-text a:hover {
+    text-decoration: underline;
+    color: #005bb5;
+}
+
+/* Error messages */
+.message {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

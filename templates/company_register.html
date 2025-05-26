@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Company Registration</title>
+</head>
+<body>
+    <h2>Register Your Company</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+
+    <p>Already registered? <a href="{% url 'company_login' %}">Login here</a></p>
+</body>
+</html>

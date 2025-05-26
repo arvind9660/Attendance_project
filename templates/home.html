@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Attendance System</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding-top: 60px;
+            background-color: #f4f4f4;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        a.button {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        a.button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logo Section -->
+    <div class="logo-container">
+        <img src="{% static 'images/face2.jpg' %}" alt="WroxAttend Logo">
+    </div>
+
+    <h1>Welcome to FaceDesk</h1>
+
+    <a href="{% url 'company_login' %}" class="button">Company Login</a>
+    <a href="{% url 'employee_login' %}" class="button">Employee Login</a>
+
+</body>
+</html>

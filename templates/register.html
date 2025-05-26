@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href={% static "css/register1.css" %}>
+</head>
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+            <h1>Register</h1>
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li style="color: red; font-weight: bold; margin-bottom: 10px;">
+                        {{message}}
+                    </li>
+                {% endfor %}
+
+            </ul>
+            
+            {% endif %}
+            <form action={% url "register" %} method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                </div>
+                <div class="input-group">
+                    <label for="conf_password">Confirm Password</label>
+                    <input type="password" id="conf_password" name="conf_password" placeholder="Confirm your password" required>
+                </div>
+                <div class="terms">
+                    <label>
+                        <input type="checkbox" name="terms" required> I agree to the <a href="#">Terms and Conditions</a>
+                    </label>
+                </div><form action={% url "login"%} method="get">
+                <button type="submit" class="btn">Register</button>
+                </from>
+            </form>
+            <p class="signin-text">Already have an account? <a href={% url "company_login" %} method='get'>Sign in</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

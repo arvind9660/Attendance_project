@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Attendance System</title>
+    <link rel="stylesheet" href="{% static 'css/_index.css' %}">
+
+</head>
+<body>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                <img src="{% static 'images/face2.jpg' %}" alt="Logo" class="logo">
+                 FaceDesk
+            </a>
+
+            <ul class="navbar-menu">
+                <li><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+                <li><a href="{% url 'record' %}" class="nav-link">Record</a></li>
+                <li><a href="{% url 'select_camera' %}" class="nav-link">Settings</a></li>
+                {% if request.session.company_id %}
+                <li><a href="{% url 'add_face' %}" class="nav-link">Add Employee</a></li>
+                     <li><a href="{% url 'employee_register' %}" class="nav-link">Employee Registration</a></li> 
+                {% endif %}
+
+                
+                <!-- Dynamic login link -->
+                {% if request.session.company_id %}
+                    <li><a href="{% url 'employee_login' %}" class="nav-link">Employee Login</a></li>
+                {% elif request.session.employee_id %}
+                    <li><a href="{% url 'company_login' %}" class="nav-link">Company Login</a></li>
+                {% else %}
+                    <li><a href="{% url 'company_login' %}" class="nav-link">Login</a></li>
+                {% endif %}
+                <li><a href="{% url 'company_logout' %}" class="nav-link">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <section class="hero">
+            <h1>Welcome to the FaceDesk</h1>
+            <p>Streamline your attendance process with our advanced system.</p>
+            <a href="{% url 'face_recognition' %}" class="cta-button">Get Started</a>
+        </section>
+
+        <section class="features">
+            <div class="feature-item">
+                <i class="fas fa-check-circle feature-icon"></i>
+                <h2>Automated Attendance</h2>
+                <p>Track attendance accurately using facial recognition technology.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-user-graduate feature-icon"></i>
+                <h2>Employee Management</h2>
+                <p>Easily manage employee profiles and attendance records.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-file-alt feature-icon"></i>
+                <h2>Detailed Reports</h2>
+                <p>Generate and export comprehensive attendance reports.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Employee Attendance System. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

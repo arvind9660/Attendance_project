@@ -1,0 +1,197 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    overflow: hidden;
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Login Container */
+.login-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.98);
+    animation: containerZoom 0.6s ease-out forwards;
+}
+
+/* Container Zoom-in Animation */
+@keyframes containerZoom {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc, #ff8c00);
+    filter: blur(15px);
+    z-index: -1;
+}
+
+/* Header */
+.login-container h1 {
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    animation: fadeInText 1s ease-out forwards;
+}
+
+/* Header Text Fade-in */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+    animation: fadeInText 1.5s ease-out forwards;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ddd;
+}
+
+/* Input Fields */
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Focus Effects */
+.form-group input:focus {
+    border-color: #6a11cb;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(106, 17, 203, 0.6);
+    transform: scale(1.02);
+}
+
+/* Placeholder Text */
+.form-group input::placeholder {
+    color: #ccc;
+}
+
+/* Button */
+.btn {
+    background-color: #2575fc;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Hover Effects */
+.btn:hover {
+    background-color: #6a11cb;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(106, 17, 203, 0.3);
+}
+
+/* Button Active Effects */
+.btn:active {
+    transform: translateY(0) scale(1);
+}
+
+/* Signin Link */
+.signin-text {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 20px;
+    color: #ddd;
+    opacity: 0;
+    animation: fadeInText 2s ease-out 1s forwards;
+}
+
+.signin-text a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signin-text a:hover {
+    color: #6a11cb;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 40px;
+        width: 90%;
+    }
+
+    .login-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+}

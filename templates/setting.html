@@ -1,0 +1,19 @@
+<!-- templates/setting.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Camera</title>
+</head>
+<body>
+    <h2>Select Camera</h2>
+    <form method="get" action="{% url 'select_camera' %}">
+        <select name="cam_index" onchange="this.form.submit()">
+            <option disabled selected>Select Camera</option>
+            <option value="0">Camera 0</option>
+            <option value="1">Camera 1</option>
+            <option value="2">Camera 2</option>
+            <option value="3">Camera 3</option>
+        </select>
+    </form>
+</body>
+</html>

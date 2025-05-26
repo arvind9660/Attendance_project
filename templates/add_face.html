@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/_add_face.css' %}">
+    <title>Add Face</title>
+    <style>
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .back-button button {
+            background-color: #28a745; /* Green */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ BACK BUTTON: bottom-left with green color -->
+    <div class="back-button">
+        <a href="{% url 'index' %}">
+            <button type="button">⬅ Back</button>
+        </a>
+    </div>
+
+    <div class="container">
+        <h1>Add a New Face</h1>
+        <h1>{{ x }}</h1>
+
+        <form action="{% url 'add_face' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required>
+            <br><br>
+            <label for="image">Image:</label>
+            <input type="file" name="image" id="image" accept="image/*" required>
+            <button type="submit">Add Face</button>
+        </form>
+
+        <form action="{% url 'std_record' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="show_btn">Show Faces</button>
+        </form>
+    </div>
+</body>
+</html>
